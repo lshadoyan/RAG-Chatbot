@@ -113,6 +113,8 @@ class Preprocessing:
         texts = self.partitioning_step(doc_path)
         # text_summaries = self.text_summary(texts)
         text_summaries = texts
+
+
         
         for i, (original, summary) in enumerate(zip(texts, text_summaries)):
             try:
@@ -124,9 +126,10 @@ class Preprocessing:
                 doc_chunks.append(doc_chunk)
             except ValidationError as e:
                 errors.append(e)
-        
-        doc_list = [Document(page_content=chunk.summary, metadata=chunk.dict()) for chunk in doc_chunks]
-        self.vectordatabase.add_documents(doc_list)
+                
+        if(len(texts) > 0):
+            doc_list = [Document(page_content=chunk.summary, metadata=chunk.dict()) for chunk in doc_chunks]
+            self.vectordatabase.add_documents(doc_list)
 
 
     def process_all_docs(self):

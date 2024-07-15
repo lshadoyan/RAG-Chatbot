@@ -13,7 +13,7 @@ services:
     depends_on:
       - mongodb
     volumes:
-      - chroma_db:/app/chroma_db
+      - ./chroma_db:/app/chroma_db
       - .:/app
 
 
@@ -47,6 +47,3 @@ services:
 networks:
   app:
     driver: bridge
-
-volumes:
-  chroma_db:
