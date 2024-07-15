@@ -1,0 +1,16 @@
+[FILE]
+doc_dir = "./data/documents/"
+image_filepath = "./data/images/"
+
+[LLM]
+model = "gpt-3.5-turbo-0125"
+
+[URL]
+base_fastapi = "http://fastapi-container:8000"
+
+[MONGO]
+host = "mongodb"
+port = 27017
+
+[CHROMA]
+path = "./chroma_db"

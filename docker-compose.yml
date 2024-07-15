@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.fastapi
+    container_name: fastapi-container
+    ports:
+      - "8000:8000"
+    networks:
+      - app
+    depends_on:
+      - mongodb
+    volumes:
+      - chroma_db:/app/chroma_db
+      - .:/app
+
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.streamlit
+    container_name: streamlit-container
+    ports:
+      - "8501:8501"
+    networks:
+      - app
+    depends_on:
+      - fastapi
+      - mongodb
+    volumes:
+    - .:/app
+    
+  
+  mongodb:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.mongo
+    container_name: mongodb
+    ports: 
+      - "27017:27017"
+    networks:
+      - app
+    
+
+networks:
+  app:
+    driver: bridge
+
+volumes:
+  chroma_db:
