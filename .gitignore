@@ -1,10 +1,7 @@
 __pycache__/
 **/__pycache__/
 
-data/documents/*
-data/images/*
-!data/documents/.gitkeep
-!data/images/.gitkeep
+./chroma_db
 
 .venv
 .env
