@@ -55,12 +55,6 @@ class Preprocessing:
                 extract_image_block_output_dir= self.config["FILE"]["image_filepath"],
                 strategy="hi_res",
             )
-        # elements = chunk_by_title(elements,
-        #                         max_characters=1000, 
-        #                         include_orig_elements=True,
-        #                         combine_text_under_n_chars=0,
-        #                         overlap=200,
-        #                         )
 
         elements = chunk_elements(
                                 elements,
@@ -76,8 +70,6 @@ class Preprocessing:
                 else:
                     section += str(obj) + " "
             texts.append(section)
-        print(texts)
-        print(len(texts))
         return texts
 
 
@@ -111,7 +103,6 @@ class Preprocessing:
         errors = []
         doc_chunks = []
         texts = self.partitioning_step(doc_path)
-        # text_summaries = self.text_summary(texts)
         text_summaries = texts
 
 

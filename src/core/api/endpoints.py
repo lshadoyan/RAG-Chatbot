@@ -9,11 +9,10 @@ import asyncio
 
 load_dotenv()
 
-# Initializes FastAPI application
 app = FastAPI()
 
-# Initializes RAG and MongoHistory instances
 rag = RAG()
+
 mongo_history = MongoHistory()
 
 class ChatQuestion(BaseModel):
@@ -48,7 +47,6 @@ async def llm_response(query, history, session_id):
     """
     response_text = ""
     context = rag.search(query)
-    print(context)
     async for chunk in stream_output(history=history, context= context, query=query):
         response_text += chunk.content
         await asyncio.sleep(0)
