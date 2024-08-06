@@ -8,5 +8,5 @@ data/images/*
 !data/documents/.gitkeep
 !data/images/.gitkeep
 
-.venv
+venv
 .env

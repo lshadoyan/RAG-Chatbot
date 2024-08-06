@@ -1,15 +1,16 @@
 # RAG-Chatbot
+
 This repository creates a chatbot that utilizes OpenAI's language models. It integrates FastAPI for backend operations and Streamlit for the frontend. The system uses MongoDB to store chat histories and Chroma for vector-based similarity searches, enabling retrieval-augmented generation (RAG) to provide contextually relevant responses.
 
 ## Quick Start
 
-### Clone the repository:
+### Clone the repository
 
 ```sh
 git clone <repo_url>
 ```
 
-### Modify Environment Variables:
+### Modify Environment Variables
 
 1. Rename `.env_example` to `.env`.
 2. Add your OpenAI key to the `.env` file:
@@ -18,33 +19,56 @@ git clone <repo_url>
 OPENAI_API_KEY=<your_openai_api_key>
 ```
 
-### Build and Run with Docker Compose:
+### Build and Run with Docker Compose
 
 ```sh
-docker-compose up --build
+docker-compose up --build -d
 ```
 
-## Adding Documents:
-
-### Install Requirements:
-
-To install the necessary Python packages, run:
+### Alternatively, Run with Make
 
 ```sh
-pip install -r requirements.txt
+make build
 ```
 
-Additionally, you need to install Poppler and Tesseract for handling PDFs and OCR functionality:
+## Adding Documents
+
+### Prerequisites
+
+To handle PDFs and OCR functionality, ensure you have the following installed:
 
 - [**Poppler**](https://pdf2image.readthedocs.io/en/latest/installation.html)
 - [**Tesseract**](https://tesseract-ocr.github.io/tessdoc/Installation.html)
 
-Place your documents in the `data/documents` directory.\
-To add documents to the Chroma database, run `preprocess.py` from the base directory (`RAG_chatbot`):
+### Placing Documents
 
-```sh
-python preprocess.py
-```
+Place your documents in the `data/documents` directory.
+
+### Option 1: Using Makefile
+
+   Add your documents and run the preprocessing script with a single command:
+
+   ```sh
+   make preprocess
+   ```
+
+### Option 2: Manual Installation
+
+1. Install Requirements
+
+   Install the necessary python packages using:
+
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+2. Add Documents to the Database
+
+   From the base directory (RAG_chatbot), run the preprocessing script:
+
+   ```sh
+   python preprocess.py
+   ```
 
 ## Components
 

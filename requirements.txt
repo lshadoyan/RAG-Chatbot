@@ -9,3 +9,4 @@ Requests==2.32.3
 streamlit==1.36.0
 toml==0.10.2
 unstructured==0.14.10
+unstructured[pdf]
